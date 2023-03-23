@@ -9,5 +9,3 @@ export default {
   components: { BaseUploadFile },
 };
 </script>
-
-<style></style>

@@ -1,6 +1,6 @@
 import { ActionTree, MutationTree, GetterTree } from "vuex";
 
-export const state = () => ({});
+export const state = () => ({ test: 0 });
 
 export type RootState = ReturnType<typeof state>;
 

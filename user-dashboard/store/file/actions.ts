@@ -5,13 +5,13 @@ import { FileState } from ".";
 import { RootState } from "..";
 
 const actions: ActionTree<FileState, RootState> = {
-  async [ActionTypes.UPLOAD]({}, params = {}) {
-    const data = await this.$axios.post("/", params);
+  async [ActionTypes.UPLOAD]({ commit }, params = {}) {
+    const data = await $axios.$post("/", params);
     return data;
   },
 
   async [ActionTypes.GET_ALL]({ commit }) {
-    const data = await this.$axios.get("/");
+    const data = await this.$axios.$get("/");
     commit(MutationTypes.SET_FILES, { data });
     return data;
   },

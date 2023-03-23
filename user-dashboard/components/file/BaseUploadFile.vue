@@ -13,6 +13,7 @@
       :width="200"
       :elevation="0"
       class="mt-3"
+      :disabled="!file"
       @click="upload"
       >Upload</v-btn
     >
@@ -53,5 +54,3 @@ export default {
   },
 };
 </script>
-
-<style></style>
