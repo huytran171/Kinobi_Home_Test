@@ -4,13 +4,16 @@ import File from "../database/entities/file";
 import IFileDb from "./interfaces/file-db";
 
 export default function makeFileDb({
-  fileDb,
+  fileDbModel,
 }: {
-  fileDb: mongoose.Model<IFile & mongoose.Document, Record<string, unknown>>;
+  fileDbModel: mongoose.Model<
+    IFile & mongoose.Document,
+    Record<string, unknown>
+  >;
 }): IFileDb {
   return new (class FileDb implements IFileDb {
     async getAll(): Promise<IFile[] | null> {
-      const existing = await fileDb.find();
+      const existing = await fileDbModel.find();
 
       if (existing.length) {
         return existing.map((file_item) => new File(file_item));
@@ -20,7 +23,7 @@ export default function makeFileDb({
     }
 
     async insert(payload: Record<string, unknown>): Promise<IFile | null> {
-      const inserted = await fileDb.create(payload);
+      const inserted = await fileDbModel.create(payload);
 
       if (inserted) {
         return new File(inserted);

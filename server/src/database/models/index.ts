@@ -4,10 +4,6 @@ import fileSchema from "../schemas/file";
 
 type IFileModel = IFile & mongoose.Document;
 
-const UserModel = mongoose.model<IFileModel>("File", fileSchema);
+const FileModel = mongoose.model<IFileModel>("File", fileSchema);
 
-export default Object.freeze({
-  UserModel,
-});
-
-export { UserModel };
+export { FileModel };

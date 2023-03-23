@@ -1,8 +1,12 @@
-import { Schema } from "mongoose";
-import IFile from "../interfaces/file";
+import mongoose from "mongoose";
 
-const fileSchema = new Schema<IFile>({
+const Schema = mongoose.Schema;
+
+const fileSchema = new Schema({
   meta: { type: Object },
+  created_at: { type: Date, default: Date.now },
 });
+
+fileSchema.index({ created_at: -1 });
 
 export default fileSchema;

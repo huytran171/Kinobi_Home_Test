@@ -1,0 +1,7 @@
+const HTTP_STATUS_CODE = {
+  BAD_REQUEST: 400,
+  OK: 200,
+  CREATED: 201,
+};
+
+export { HTTP_STATUS_CODE };
