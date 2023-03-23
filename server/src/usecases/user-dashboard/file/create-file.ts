@@ -2,9 +2,9 @@ import IFileDb from "../../../data-access/interfaces/file-db";
 import IFile from "../../../database/interfaces/file";
 
 export type CreateFile = ({
-  fileDb,
+  payload,
 }: {
-  fileDb: IFileDb;
+  payload: Record<string, unknown>;
 }) => Promise<IFile | null>;
 
 export default function makeCreateFile({
@@ -12,7 +12,11 @@ export default function makeCreateFile({
 }: {
   fileDb: IFileDb;
 }): CreateFile {
-  return async function createFile(payload: Record<string, unknown>) {
+  return async function createFile({
+    payload,
+  }: {
+    payload: Record<string, unknown>;
+  }): Promise<IFile | null> {
     const uploaded = await fileDb.insert(payload);
     return uploaded;
   };
