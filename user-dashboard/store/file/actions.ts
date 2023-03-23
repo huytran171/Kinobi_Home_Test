@@ -6,7 +6,7 @@ import { RootState } from "..";
 
 const actions: ActionTree<FileState, RootState> = {
   async [ActionTypes.UPLOAD]({ commit }, params = {}) {
-    const data = await $axios.$post("/", params);
+    const data = await this.$axios.$post("/", params);
     return data;
   },
 
