@@ -20,9 +20,7 @@ app.listen(process.env.APP_PORT, () =>
 );
 
 makeDatabase()
-  .then(() => {
-    new AWSS3();
-  })
+  .then(() => new AWSS3())
   .catch((error) => {
     console.error(error);
     process.exit(1);
