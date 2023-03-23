@@ -23,4 +23,7 @@ makeDatabase()
   .then(() => {
     new AWSS3();
   })
-  .catch((error) => console.error(error));
+  .catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });
