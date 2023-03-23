@@ -1,8 +1,24 @@
-export default function makeDatabase() {
-  const username = process.env.MONGO_INITDB_ROOT_USERNAME || "root";
-  const password = process.env.MONGO_INITDB_ROOT_PASSWORD || "root";
-  const host = process.env.MONGO_INITDB_HOST || "localhost";
-  const port = process.env.MONGO_INITDB_PORT || 27017;
+import mongoose from "mongoose";
 
-  const connection_string = `mongodb://${username}:${password}@${host}:${port}]`;
+export default async function makeDatabase(): Promise<typeof mongoose> {
+  const connection_string = makeConnectionString();
+
+  const not_connected = mongoose.connection.readyState === 0;
+  not_connected && (await mongoose.connect(connection_string));
+
+  console.log("Connected to mongoose");
+
+  return mongoose;
+}
+
+export function makeConnectionString(): string {
+  const {
+    MONGO_INITDB_ROOT_USERNAME,
+    MONGO_INITDB_ROOT_PASSWORD,
+    MONGO_INITDB_HOSTNAME,
+    MONGO_INITDB_PORT,
+    MONGO_INITDB_DATABASE,
+  } = process.env;
+
+  return `mongodb://${MONGO_INITDB_ROOT_USERNAME}:${MONGO_INITDB_ROOT_PASSWORD}@${MONGO_INITDB_HOSTNAME}:${MONGO_INITDB_PORT}/${MONGO_INITDB_DATABASE}?authSource=admin`;
 }
