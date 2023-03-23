@@ -3,7 +3,7 @@ version: "2.1"
 services:
   mongo:
     image: mongo
-    restart: unless-stopped
+    restart: always
     volumes:
       - ./mongo/data:/data/db
     ports:
@@ -21,7 +21,7 @@ services:
 
   mongo-express:
     image: mongo-express
-    restart: unless-stopped
+    restart: always
     volumes:
       - ./mongo/data:/data/db
     ports:

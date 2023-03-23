@@ -5,8 +5,6 @@ import dotenv from "dotenv";
 dotenv.config();
 
 import bodyParser from "body-parser";
-import multer from "multer";
-const upload = multer();
 
 import AWSS3 from "./config/aws-s3";
 import makeDatabase from "./data-access/make-db";
@@ -14,7 +12,6 @@ import app_router from "./routes/user-dashboard";
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(upload.single("file"));
 app.use("/api", app_router);
 
 app.listen(process.env.APP_PORT, () =>

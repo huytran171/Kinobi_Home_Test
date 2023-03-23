@@ -24,8 +24,4 @@ export default class AWSS3 {
 
     console.log("Connected to AWS S3");
   }
-
-  static getS3() {
-    return AWSS3.s3;
-  }
 }

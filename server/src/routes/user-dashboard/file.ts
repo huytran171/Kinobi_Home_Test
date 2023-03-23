@@ -2,7 +2,7 @@ import express from "express";
 
 import makeValidator from "../../middlewares/validator";
 import makeExpressController from "../../middlewares/express-controller";
-import { upload } from "../../middlewares/file-upload";
+import { multer_instance } from "../../middlewares/file-upload";
 
 import {
   createFileController,
@@ -16,7 +16,7 @@ const file_router = express.Router();
 file_router.post(
   "/",
   makeValidator(createFileRules),
-  upload.single("file"),
+  multer_instance.single("file"),
   makeExpressController(createFileController)
 );
 

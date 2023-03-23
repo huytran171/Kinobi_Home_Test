@@ -3,11 +3,12 @@ import multer from "multer";
 import multerS3 from "multer-s3";
 
 export default function makeMulterS3FileUpload() {
-  const s3 = AWSS3.getS3();
+  const s3 = AWSS3.s3;
 
-  const upload = multer({
+  const multer_instance = multer({
     storage: multerS3({
       s3,
+      acl: "public-read",
       bucket: process.env.AWS_BUCKET,
       metadata: function (req, file, cb) {
         cb(null, { fieldName: file.fieldname });
@@ -18,8 +19,8 @@ export default function makeMulterS3FileUpload() {
     }),
   });
 
-  return upload;
+  return multer_instance;
 }
 
-const upload = makeMulterS3FileUpload();
-export { upload };
+const multer_instance = makeMulterS3FileUpload();
+export { multer_instance };
