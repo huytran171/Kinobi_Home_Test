@@ -5,6 +5,8 @@ import dotenv from "dotenv";
 dotenv.config();
 
 import bodyParser from "body-parser";
+import cors from "cors";
+import helmet from "helmet";
 
 import AWSS3 from "./config/aws-s3";
 import makeDatabase from "./data-access/make-db";
@@ -12,6 +14,8 @@ import app_router from "./routes/user-dashboard";
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(cors());
+app.use(helmet());
 app.use("/api", app_router);
 
 app.listen(process.env.APP_PORT, () =>

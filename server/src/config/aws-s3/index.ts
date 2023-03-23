@@ -1,15 +1,15 @@
 import AWS from "aws-sdk";
 
 export default class AWSS3 {
-  public static s3: AWS.S3;
+  private static s3: AWS.S3;
 
   constructor() {
     if (!AWSS3.s3) {
-      AWSS3.makeS3();
+      AWSS3.initial();
     }
   }
 
-  static makeS3() {
+  static initial() {
     AWS.config.update({
       accessKeyId: process.env.AWS_ACCESS_KEY,
       secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
@@ -23,5 +23,12 @@ export default class AWSS3 {
     AWSS3.s3 = new AWS.S3();
 
     console.log("Connected to AWS S3");
+  }
+
+  static getInstance() {
+    if (AWSS3.s3) return AWSS3.s3;
+
+    new AWSS3();
+    return AWSS3.s3;
   }
 }
