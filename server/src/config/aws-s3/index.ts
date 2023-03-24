@@ -22,7 +22,7 @@ export default class AWSS3 {
 
     AWSS3.s3 = new AWS.S3();
 
-    console.log("Connected to AWS S3");
+    console.log("Connected to AWS S3.");
   }
 
   static getInstance() {

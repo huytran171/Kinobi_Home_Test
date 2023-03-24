@@ -6,7 +6,7 @@ export default async function makeDatabase(): Promise<typeof mongoose> {
   const not_connected = mongoose.connection.readyState === 0;
   not_connected && (await mongoose.connect(connection_string));
 
-  console.log("Connected to mongoose");
+  console.log("Connected to mongoose.");
 
   return mongoose;
 }
