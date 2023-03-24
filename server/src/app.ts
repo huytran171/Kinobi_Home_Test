@@ -12,6 +12,9 @@ import AWSS3 from "./config/aws-s3";
 import makeDatabase from "./data-access/make-db";
 import app_router from "./routes/user-dashboard";
 import { multer_instance } from "./middlewares/file-upload";
+import { rate_limiter } from "./config/express-rate-limit";
+
+process.env.NODE_ENV === "production" && app.use(rate_limiter);
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
