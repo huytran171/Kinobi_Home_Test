@@ -8,8 +8,14 @@ export default function makeValidator(rules: Rules) {
     res: Response,
     next: NextFunction
   ) {
-    const data = req.body;
-    const validation = new ValidatorJS(data, rules);
+    const body = req.body;
+    const params = req.params;
+    const query = req.query;
+    const file = req.file;
+
+    const payload = Object.assign({}, body, params, query, { file });
+
+    const validation = new ValidatorJS(payload, rules);
 
     if (validation.passes()) {
       return next();

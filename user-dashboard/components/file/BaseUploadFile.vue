@@ -47,6 +47,7 @@ export default {
         this.file && form_data.append("file", this.file);
 
         const data = await this.UPLOAD(form_data);
+        console.log("---------------ooo", data);
       } catch (error) {
         console.error(error);
       }

@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
 const fileSchema = new Schema({
-  meta: { type: Object },
+  file: { type: Object },
   created_at: { type: Date, default: Date.now },
 });
 

@@ -21,7 +21,7 @@ export default function makeCreateFileController({
       }
 
       const payload = {
-        filename: file.fieldname,
+        file,
       };
 
       const created = await createFile({ payload });

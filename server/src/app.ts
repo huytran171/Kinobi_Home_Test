@@ -11,11 +11,13 @@ import helmet from "helmet";
 import AWSS3 from "./config/aws-s3";
 import makeDatabase from "./data-access/make-db";
 import app_router from "./routes/user-dashboard";
+import { multer_instance } from "./middlewares/file-upload";
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());
 app.use(helmet());
+app.use(multer_instance.single("file"));
 app.use("/api", app_router);
 
 app.listen(process.env.APP_PORT, () =>
