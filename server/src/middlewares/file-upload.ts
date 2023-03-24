@@ -27,7 +27,7 @@ export default function makeMulterS3FileUpload() {
     storage: multerS3({
       s3,
       acl: "public-read",
-      bucket: process.env.AWS_BUCKET,
+      bucket: process.env.S3_BUCKET,
       key: function (req, file, cb) {
         cb(null, Date.now().toString());
       },
