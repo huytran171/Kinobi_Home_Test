@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex";
+import { mapActions } from "vuex";
 import fileMixin from "~/mixins/file";
 export default {
   name: "BaseUploadFile",
@@ -31,14 +31,10 @@ export default {
       file: undefined,
     };
   },
-  computed: {
-    ...mapGetters({
-      files: "file/files",
-    }),
-  },
   methods: {
     ...mapActions({
       UPLOAD: "file/UPLOAD",
+      GET_ALL: "file/GET_ALL",
     }),
 
     async upload() {
@@ -46,8 +42,10 @@ export default {
         const form_data = new FormData();
         this.file && form_data.append("file", this.file);
 
-        const data = await this.UPLOAD(form_data);
-        console.log("---------------ooo", data);
+        await this.UPLOAD(form_data);
+        await this.GET_ALL();
+
+        alert("File was successfully uploaded");
       } catch (error) {
         console.error(error);
       }

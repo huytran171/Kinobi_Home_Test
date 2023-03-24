@@ -10,9 +10,6 @@ export default function makeMulterS3FileUpload() {
       s3,
       acl: "public-read",
       bucket: process.env.AWS_BUCKET,
-      metadata: function (req, file, cb) {
-        cb(null, file);
-      },
       key: function (req, file, cb) {
         cb(null, Date.now().toString());
       },
