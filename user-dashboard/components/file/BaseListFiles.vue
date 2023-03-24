@@ -1,28 +1,15 @@
 <template>
   <v-row>
-    <v-col v-for="file in files" :key="file._id" cols="12" class="divider">
-      <v-row class="text-body-2 d-flex primary--text">
-        <v-col cols="12" sm="3">
-          <span>{{ file.file?.originalname }}</span>
-        </v-col>
-        <v-col cols="12" sm="3">
-          <span> {{ file.file?.mimetype }}</span>
-        </v-col>
-        <v-col cols="12" sm="3">
-          <span> {{ file.file?.size }} KB </span>
-        </v-col>
-        <v-col cols="12" sm="3">
-          <a :href="file.file?.location">link</a>
-        </v-col>
-      </v-row>
-    </v-col>
+    <BaseListItem v-for="file in files" :key="file._id" :data="file.file" />
   </v-row>
 </template>
 
 <script>
 import { mapGetters, mapActions } from "vuex";
+import BaseListItem from "@/components/file/BaseListItem.vue";
 export default {
   name: "BaseListFiles",
+  components: { BaseListItem },
   data() {
     return {
       file: undefined,
