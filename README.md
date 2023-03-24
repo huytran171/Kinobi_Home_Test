@@ -2,7 +2,7 @@
 
 Move to the server and user-dashboard folder and run them as separate parts.
 
-## Run the server:
+### Run the server:
 
 1. cd server
 2. Fill in the `.env` file
@@ -11,7 +11,7 @@ Move to the server and user-dashboard folder and run them as separate parts.
 5. `yarn dev`
 6. Server now listening on `http://localhost:3001`
 
-## Run the user-dashboard:
+### Run the user-dashboard:
 
 1. cd user-dashboard
 2. Fill in the `.env` file
