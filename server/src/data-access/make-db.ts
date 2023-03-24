@@ -16,9 +16,7 @@ export function makeConnectionString(): string {
     MONGO_INITDB_ROOT_USERNAME,
     MONGO_INITDB_ROOT_PASSWORD,
     MONGO_INITDB_HOSTNAME,
-    MONGO_INITDB_PORT,
-    MONGO_INITDB_DATABASE,
   } = process.env;
 
-  return `mongodb://${MONGO_INITDB_ROOT_USERNAME}:${MONGO_INITDB_ROOT_PASSWORD}@${MONGO_INITDB_HOSTNAME}:${MONGO_INITDB_PORT}/${MONGO_INITDB_DATABASE}?authSource=admin`;
+  return `mongodb+srv://${MONGO_INITDB_ROOT_USERNAME}:${MONGO_INITDB_ROOT_PASSWORD}@${MONGO_INITDB_HOSTNAME}/?retryWrites=true&w=majority`;
 }
