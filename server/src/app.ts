@@ -1,4 +1,4 @@
-import express from "express";
+import express, { Request, Response } from "express";
 const app = express();
 
 import dotenv from "dotenv";
@@ -22,6 +22,10 @@ app.use(cors());
 app.use(helmet());
 app.use(multer_instance.single("file"));
 app.use("/", app_router);
+
+app.get("/", (_req: Request, res: Response) => {
+  return res.send("Express Typescript on Vercel");
+});
 
 app.listen(process.env.APP_PORT, () =>
   console.log(`Server is listening on port ${process.env.APP_PORT}.`)
