@@ -2,7 +2,6 @@
   "version": 2,
   "name": "home-test",
   "builds": [{ "src": "dist/app.js", "use": "@vercel/node" }],
-  "routes": [{ "src": "/(.*)", "dest": "/dist/app.js" }],
   "headers": [
     {
       "source": "/(.*)",
