@@ -3,11 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "app.ts",
-  "pre-commit": [
-    "ts.check",
-    "build",
-    "add-build"
-  ],
   "scripts": {
     "start": "nodemon src/app.ts",
     "build": "rimraf dist && tsc",
@@ -17,6 +12,11 @@
     "dc:up": "docker-compose up -d",
     "dc:down": "docker-compose down"
   },
+  "pre-commit": [
+    "ts.check",
+    "build",
+    "add-build"
+  ],
   "author": "",
   "license": "ISC",
   "dependencies": {
