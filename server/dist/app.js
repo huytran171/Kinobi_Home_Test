@@ -22,9 +22,6 @@ app.use((0, cors_1.default)());
 app.use((0, helmet_1.default)());
 app.use(file_upload_1.multer_instance.single("file"));
 app.use("/", user_dashboard_1.default);
-app.get("/", (_req, res) => {
-    return res.send("Express Typescript on Vercel");
-});
 app.listen(process.env.APP_PORT, () => console.log(`Server is listening on port ${process.env.APP_PORT}.`));
 (0, make_db_1.default)()
     .then(() => new aws_s3_1.default())
