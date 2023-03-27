@@ -1,8 +1,9 @@
+import { Request } from "express";
 import AWSS3 from "../config/aws-s3";
 import multer from "multer";
 import multerS3 from "multer-s3";
 
-export function fileFilter(req, file, cb) {
+export function fileFilter(req: Request, file: any, cb: Function) {
   const mimetypes = [
     "image/jpeg",
     "image/png",
