@@ -23,6 +23,7 @@ export function fileFilter(req: Request, file: any, cb: Function) {
 
 export default function makeMulterS3FileUpload() {
   const s3 = AWSS3.getInstance();
+  console.log("-----------------1", process.env.S3_BUCKET);
 
   const multer_instance = multer({
     storage: multerS3({
@@ -38,9 +39,11 @@ export default function makeMulterS3FileUpload() {
     },
     fileFilter,
   });
+  console.log("-----------------2");
 
   return multer_instance;
 }
+console.log("-----------------3");
 
 const multer_instance = makeMulterS3FileUpload();
 export { multer_instance };
