@@ -21,7 +21,7 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use(helmet());
 app.use(multer_instance.single("file"));
-app.use("/", app_router);
+// app.use("/", app_router);
 
 app.get("/", (_req: Request, res: Response) => {
   return res.send("Express Typescript on Vercel");
